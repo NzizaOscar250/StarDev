@@ -15,7 +15,7 @@ const dispatch = useDispatch();
     <>
 
         
-        <div className="container">
+        <div className="">
           <Outlet/>
         </div>
     </>

@@ -2,6 +2,9 @@ import { lazy,Suspense, } from 'react';
 import "./index.css"
 
 import { createBrowserRouter,createRoutesFromElements,RouterProvider,Route } from 'react-router-dom';
+import Statistics from './view/staff/Statistics';
+import Notifications from './view/staff/Notifications';
+import Orders from './view/staff/Orders';
 
 const Home = lazy(()=>import("./view/Home"));
 const RootLayout = lazy(()=>import("./layout/RootLayout"));
@@ -40,9 +43,12 @@ function App() {
                 <Suspense fallback={<Loader/>}>
                   <HomeStaff/>
                  </Suspense>}>
+                 <Route index element={<Statistics/>}/>
+                 <Route path='notification' element={<Notifications/>}/>
+
                   <Route path='qrgen' element={ <Suspense fallback={<Loader/>}><QRCodeGenerator/></Suspense> }/>
                   <Route path='orders' element={<Home/>}/>
-                      <Route path='orders/:orderId' element={<Home/>}/>
+                      <Route path='orders/:orderId' element={<Orders/>}/>
                       <Route path='orders/completed' element={<Home/>}/>
                       <Route path='orders/history' element={<Home/>}/>
 

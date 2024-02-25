@@ -1,19 +1,19 @@
-import React from 'react'
+
 import { NavLink } from 'react-router-dom';
-import {  FiHelpCircle, FiHome, FiPhone, FiSearch, FiSettings, FiShoppingBag, FiUser } from 'react-icons/fi';
-import { FaBookOpen, FaBookReader, FaFile, FaFileArchive, FaFileExport } from 'react-icons/fa';
+import {  FiHelpCircle, FiHome,  FiSettings,  FiUser } from 'react-icons/fi';
+import {  FaBookReader } from 'react-icons/fa';
 import {RiNotification3Line} from "react-icons/ri"
 const Nav = () => {
   return (
-    <nav className='flex items-center justify-around py-4 px-4 sticky -bottom-3 bg-white shadow-inner'>
+    <nav className='flex items-center justify-around py-4 px-4 sticky bg-blue-400 shadow-inner'>
          <div className='Brand hidden sm:block'>
-           <h3 className='text-purple-500 text-2xl poppins-semibold'>STARDEV Tech</h3>
+           <h3 className='text-slate-100 text-2xl poppins-semibold'>STARDEV </h3>
          </div>
          <div className='links flex justify-center gap-6 flex-1'>
          <NavLink to="/staff" className='flex gap-1 items-center '><FiHome style={{fontSize:20}}/></NavLink>
           <NavLink to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full 
-          text-slate-500 hover:text-slate-500'><FiUser style={{fontSize:20}}/></NavLink>
-          <NavLink to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2
+          text-slate-50 hover:text-slate-500'><FiUser style={{fontSize:20}}/></NavLink>
+          <NavLink to="notification" className='flex gap-1 items-center hover:bg-slate-200 p-2
            rounded-full text-slate-500 hover:text-slate-500 relative'>
 
           <RiNotification3Line style={{fontSize:20}}/>
@@ -22,9 +22,9 @@ const Nav = () => {
           </NavLink>
           
           <NavLink to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 
-          rounded-full text-slate-500 hover:text-slate-500'><FiHelpCircle style={{fontSize:20}}/></NavLink>
+          rounded-full text-slate-50 hover:text-slate-500'><FiHelpCircle style={{fontSize:20}}/></NavLink>
           <NavLink to="qrgen" className='flex gap-1 items-center hover:bg-slate-200
-           p-2 rounded-full text-slate-500 hover:text-slate-500'>
+           p-2 rounded-full text-slate-50 hover:text-slate-500'>
            <FaBookReader style={{fontSize:20}}/>
            </NavLink>
      
@@ -34,7 +34,7 @@ const Nav = () => {
             <FiSearch/>
          </button> */}
          <button className='hover:drop-shadow'>
-            <FiSettings style={{fontSize:22}} className='text-purple-500 ' />
+            <FiSettings style={{fontSize:22}} className='text-blue-900 ' />
          </button>
          </div>
       </nav>
