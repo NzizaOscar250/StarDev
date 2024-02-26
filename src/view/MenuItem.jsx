@@ -1,34 +1,55 @@
-const MenuItem = ({ person, handleClick }) => {
+import { useState } from 'react';
+import {FaCheck} from "react-icons/fa"
+
+const MenuItem = ({ person, handleClick, updateTotal }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [isSelected, setIsSelected] = useState(false);
+
+  const toggleSelected = () => {
+    setIsSelected(!isSelected);
+    handleClick(person.price * quantity, isSelected);
+  };
+
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    setQuantity(newQuantity);
+    handleClick(person.price * newQuantity, isSelected);
+  };
+
   return (
-    <li key={person.email} className="flex justify-between gap-x-6 py-2  my-1 border-2 px-2 rounded border-indigo-300" onClick={handleClick}>
-    <div className="flex min-w-0 gap-x-4">
-      <img className="h-20  w-20 flex-none  bg-gray-50 rounded-md" src={person.imageUrl} alt="" />
-      <div className="min-w-0 flex-auto">
-        <p className="text-sm font-semibold leading-6 text-gray-900">{person.name}</p>
-        <p className="mt-1 truncate text-xs leading-5 text-gray-500">25,000frw</p>
+    <li
+      key={person.email}
+      className={`flex justify-between gap-x-6 py-2 my-2 border px-2 cursor-pointer rounded shadow-sm ${isSelected ? 'border-blue-500 border-2' : ''}`}
+      
+    >
+      <div className="flex min-w-0 gap-x-4 items-center relative" onClick={() => toggleSelected()}>
+      <input type='checkbox' className='absolute -top-2 -left-2 
+      appearance-none h-6 w-6 rounded-md bg-white border-none    
+      ' checked={isSelected} onChange={(e) => setIsSelected(Boolean(e.target.checked))}/>
+      {isSelected && (
+  <FaCheck className='absolute -top-2 -left-2 h-6 w-6 text-blue-400 text-sm p-1'/>
+)}
+        <img className="h-20 w-20 flex-none bg-gray-50 rounded-md object-fill" src={person.image} alt="" />
+        <div className="min-w-0 flex-auto">
+          <p className="text-md font-semibold leading-6 text-gray-900">{person.name}</p>
+          <small className="wrap text-xs">{person.description}</small>
+          <p className="mt-1 truncate text-xs leading-5 text-gray-800 font-bold ">{person.price} <strong>Frw</strong></p>
+        </div>
       </div>
-    </div>
-    <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-      <p className="text-xs leading-6 text-gray-900">Quantity: </p>
- 
-        <p className="mt-1 text-xs leading-5 text-gray-500">
-        <input type="number" placeholder="Enter Quantity" className="border  outline-none  p-1 rounded w-20 shadow" value={1}/>
-          {/* Last seen <time dateTime={person.lastSeenDateTime}>{person.lastSeen}</time> */}
-        </p>
-      
-        {/* <div className="mt-1 flex items-center gap-x-1.5">
-          <div className="flex-none rounded-full bg-emerald-500/20 p-1">
-            <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          </div>
-          <p className="text-xs leading-5 text-gray-500">Online</p>
-        </div> */}
-      
-    </div>
-  </li>
+      {
+        isSelected && <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+        <p className="text-xs leading-6 text-gray-900">Quantity: </p>
+        <input
+          type="number"
+          placeholder="Enter Quantity"
+          className="border outline-none p-1 rounded w-20 shadow"
+          value={quantity}
+          onChange={(event) => handleQuantityChange(event)}
+        />
+      </div>
+      }
+    </li>
   );
 };
-
-
-
 
 export default MenuItem;

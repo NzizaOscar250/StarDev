@@ -37,8 +37,8 @@ function App() {
                 <RootLayout/>
             </Suspense>
             }>
-               <Route index element={<Home/>} />
-                <Route path='scanqr' element={<Suspense fallback={<Loader/>}><ScanQrcode/></Suspense>}/>
+               <Route path="menu" element={<Home/>} />
+                <Route index element={<Suspense fallback={<Loader/>}><ScanQrcode/></Suspense>}/>
                 <Route path='staff' element={
                 <Suspense fallback={<Loader/>}>
                   <HomeStaff/>

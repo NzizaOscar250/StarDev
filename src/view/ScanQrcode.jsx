@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const ScanQrcode = ()=>{
      const navigate = useNavigate()
     const handleResult = (res)=>{
-   navigate('/')
+   navigate('/menu')
 
     }
 
