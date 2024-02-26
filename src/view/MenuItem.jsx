@@ -22,9 +22,9 @@ const MenuItem = ({ person, handleClick, updateTotal }) => {
       className={`flex justify-between gap-x-6 py-2 my-2 border px-2 cursor-pointer rounded shadow-sm ${isSelected ? 'border-blue-400 border-2' : ''}`}
       
     >
-      <div className="flex min-w-0 gap-x-4 items-center relative" onClick={() => toggleSelected()}>
+      <div className="flex min-w-0 gap-x-4 items-center relative" >
           <input type='checkbox' className='absolute -top-2 -left-2 
-          appearance-none h-6 w-6 rounded-md bg-white border-none    
+          appearance-none h-6 w-6 rounded-md bg-white border border-gray-500   
           ' checked={isSelected} onChange={(e) => setIsSelected(Boolean(e.target.checked))}/>
           {isSelected && (
                     <FaCheck className='absolute -top-2 -left-2 h-6 w-6 text-blue-400 text-sm p-1'/>
