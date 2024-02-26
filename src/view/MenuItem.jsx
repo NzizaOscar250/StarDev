@@ -24,7 +24,7 @@ const MenuItem = ({ person, handleClick, updateTotal }) => {
     >
       <div className="flex min-w-0 gap-x-4 items-center relative" >
           <input type='checkbox' className='absolute -top-2 -left-2 
-          appearance-none h-6 w-6 rounded-md bg-white border border-gray-500   
+          appearance-none h-6 w-6 rounded-md bg-white border-none    
           ' checked={isSelected} onChange={(e) => setIsSelected(Boolean(e.target.checked))}/>
           {isSelected && (
                     <FaCheck className='absolute -top-2 -left-2 h-6 w-6 text-blue-400 text-sm p-1'/>
@@ -43,7 +43,7 @@ const MenuItem = ({ person, handleClick, updateTotal }) => {
 
                         </p>
                         {
-                      isSelected && <div className="">
+                      isSelected && <div className="hidden">
                         <p className="text-xs leading-6 text-gray-900">Quantity: </p>
                           <input
                             type="number"
