@@ -59,7 +59,7 @@ const Menu = () => {
       <div  className="bg-white sm:w-1/2 container   mx-auto px-3 my-5 py-3 rounded max-h-[550px] 
       overflow-x-auto scrollbar- scrollbar-thumb-gray-300 scrollbar-track-gray-100
       " style={{ scrollbarWidth: 'thin', scrollbarColor: 'darkgray', scrollbarTrackColor: 'red' }}>
-      <header className='flex items-center justify-between py-3 sticky -top-3 bg-white'>
+      <header className='flex items-center justify-between py-3 sticky -top-3 bg-white z-40'>
 
       <div className='flex flex-col  flex-1'>
           <h2 className=" text-3xl text-blue-400 ">Menu </h2>
