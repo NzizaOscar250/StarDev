@@ -49,6 +49,7 @@ const items = [
 
 const Menu = () => {
   // const [newItems,setNewItems] = useState()
+  const navigate=0
   const handleClick = (total,isSelected)=>{
     console.log(total,isSelected)
   }
@@ -65,8 +66,9 @@ const Menu = () => {
           <h2 className=" text-3xl text-blue-400 ">Menu </h2>
           <small>Hi,Welcome back choose your favorite food</small>
       </div>
-      <Button name="Send" actions={handleClick} bgcolor="
-       outline outline-2 outline-offset-0 flex items-center gap-2 rounded bg-blue-400 text-white">Order</Button>
+      <Link to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full hover:text-slate-500'><FiHelpCircle/></Link>
+        
+      
       </header>
 
       <div>
@@ -82,18 +84,16 @@ const Menu = () => {
       
       <footer className='flex items-center justify-around py-2 sticky -bottom-3 bg-white'>
           <Link to="/" className='flex gap-1 items-center bg-slate-200 p-2 rounded-full text-slate-500 font-bold'><FiHome/></Link>
-          <Link to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full hover:text-slate-500'><FiUser/></Link>
-          <Link to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full hover:text-slate-500 relative'>
-
-          <FiShoppingBag/>
-            <small className='absolute top-0 -right-3 -z-1 bg-slate-700 p-[2px] px-1 text-xs rounded-full text-slate-50'>20</small>
-          </Link>
           
-          <Link to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full hover:text-slate-500'><FiHelpCircle/></Link>
+          
+          
           <Link to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full hover:text-slate-500'><FiPhone/></Link>
+      <Button name="" actions={handleClick} bgcolor="
+       outline outline-2 outline-offset-0 flex items-center gap-2 rounded-full bg-indigo-900 text-white"/>
       </footer>
+      <p className='text-center text-sm text-slate-500'>Powered By StarDev Tech &copy;{new Date().getFullYear()}</p>
     </div>
-    <p className='text-center text-sm text-slate-500'>Powered By StarDev Tech &copy;{new Date().getFullYear()}</p>
+  
     </>
   );
 };

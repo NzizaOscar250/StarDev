@@ -19,35 +19,49 @@ const MenuItem = ({ person, handleClick, updateTotal }) => {
   return (
     <li
       key={person.email}
-      className={`flex justify-between gap-x-6 py-2 my-2 border px-2 cursor-pointer rounded shadow-sm ${isSelected ? 'border-blue-500 border-2' : ''}`}
+      className={`flex justify-between gap-x-6 py-2 my-2 border px-2 cursor-pointer rounded shadow-sm ${isSelected ? 'border-blue-400 border-2' : ''}`}
       
     >
       <div className="flex min-w-0 gap-x-4 items-center relative" onClick={() => toggleSelected()}>
-      <input type='checkbox' className='absolute -top-2 -left-2 
-      appearance-none h-6 w-6 rounded-md bg-white border-none    
-      ' checked={isSelected} onChange={(e) => setIsSelected(Boolean(e.target.checked))}/>
-      {isSelected && (
-  <FaCheck className='absolute -top-2 -left-2 h-6 w-6 text-blue-400 text-sm p-1'/>
-)}
-        <img className="h-20 w-20 flex-none bg-gray-50 rounded-md object-fill" src={person.image} alt="" />
-        <div className="min-w-0 flex-auto">
-          <p className="text-md font-semibold leading-6 text-gray-900">{person.name}</p>
-          <small className="wrap text-xs">{person.description}</small>
-          <p className="mt-1 truncate text-xs leading-5 text-gray-800 font-bold ">{person.price} <strong>Frw</strong></p>
-        </div>
+          <input type='checkbox' className='absolute -top-2 -left-2 
+          appearance-none h-6 w-6 rounded-md bg-white border-none    
+          ' checked={isSelected} onChange={(e) => setIsSelected(Boolean(e.target.checked))}/>
+          {isSelected && (
+                    <FaCheck className='absolute -top-2 -left-2 h-6 w-6 text-blue-400 text-sm p-1'/>
+                  )}
+            <img className="h-20 w-20 flex-none bg-gray-50 rounded-md object-fill" src={person.image} alt="" />
+            <div className="min-w-0 flex-auto">
+              <p className="text-md font-semibold leading-6 text-gray-900">{person.name}</p>
+              <small className="wrap text-xs">{person.description}</small>
+         
+              {/* *************price & quantity *************** */}
+              
+              <div className='flex items-center justify-between'>
+                                
+                            <p className="mt-1 truncate text-xs leading-5 text-gray-800 font-bold ">
+                        {person.price} <strong>Frw</strong>
+
+                        </p>
+                        {
+                      isSelected && <div className="">
+                        <p className="text-xs leading-6 text-gray-900">Quantity: </p>
+                          <input
+                            type="number"
+                            placeholder="Enter Quantity"
+                            className="border outline-none p-1 rounded text-xs text-slate-500"
+                            value={quantity}
+                            onChange={(event) => handleQuantityChange(event)}
+                          />
+                      </div>
+                    }
+              </div>
+
+
+            </div>
       </div>
-      {
-        isSelected && <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-        <p className="text-xs leading-6 text-gray-900">Quantity: </p>
-        <input
-          type="number"
-          placeholder="Enter Quantity"
-          className="border outline-none p-1 rounded w-20 shadow"
-          value={quantity}
-          onChange={(event) => handleQuantityChange(event)}
-        />
-      </div>
-      }
+    
+    
+      
     </li>
   );
 };
