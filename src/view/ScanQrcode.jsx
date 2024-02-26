@@ -1,13 +1,20 @@
 
 import {QrScanner} from '@yudiel/react-qr-scanner';
+import { useNavigate } from 'react-router-dom';
 
 
 const ScanQrcode = ()=>{
+     const navigate = useNavigate()
+    const handleResult = (res)=>{
+   navigate('/')
+
+    }
+
 
   return (
     <QrScanner
-    onDecode={(result) => console.log(result)}
-    onError={(error) => console.log(error?.message)}
+    onDecode={(result) => handleResult(result)}
+    onError={(error) => {console.log(error?.message); alert("Please Download Latest Browser Version")}}
 />
   )
 }
