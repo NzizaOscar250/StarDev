@@ -1,6 +1,88 @@
 import * as API from "../api"
 
 
+
+export const signinAction = (info,navigate)=>async(dispatch)=>{
+    try {
+         const {data} = await API.signinApi(info)
+
+         dispatch({type:'AUTH',payload:data})
+         navigate("/admin")
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
+
+export const createMenu = (info)=>async(dispatch)=>{
+
+    try {
+        const {data} = await API.createMenu(info)
+
+        dispatch({type:"CREATE_MENU",payload:data})
+      
+        dispatch({type:"FEEDBACK",payload:{status:200,message: 'Successfully created menu!!'}})
+    } catch (error) {
+        dispatch({type:"FEEDBACK",payload:{status:404,message: 'Failed To create menu!'}})
+
+    }
+}
+
+
+
+
+export const fetchMenu = ()=>async(dispatch)=>{
+
+    try {
+        const {data} = await API.fetchMenu()
+        dispatch({type:"FETCH_MENU",payload:data})
+        
+    } catch (error) {
+        console.log(error.message)
+
+    }
+}
+
+
+export const editMenu = (info,menuId)=>async(dispatch)=>{
+    try {
+       const {data} = await API.updateMenu(info,menuId)
+       dispatch({type:'UPDATE_MENU',payload:data})
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
+export const deleteMenu = (menuId)=>async(dispatch)=>{
+    try {
+         const {data} = await API.deleteMenu(menuId)
+
+         dispatch({type:'DELETE_MENU',payload:data})
+    } catch (error) {
+        console.log(error.message)        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const fetchProjects = ()=>async(dispatch)=>{
     try {
         const {data} = await API.fetchProjects()

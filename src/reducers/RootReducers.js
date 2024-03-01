@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
-import Projects from "./Projects"
-import Activities from './Activities'
-import SubActivities from "./SubActivities";
-import Components from "./Components"
+import Auth from "./Auth";
+import Menu from "./Menu";
+import FeedBack from "./FeedBack";
 
 const RootReducers = combineReducers({
-    Projects,Components,Activities,SubActivities
+    Auth,Menu,feedback:FeedBack
 })
 
 export default RootReducers;
