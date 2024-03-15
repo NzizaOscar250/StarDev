@@ -3,7 +3,12 @@ import { NavLink } from 'react-router-dom';
 import {  FiHelpCircle, FiHome,  FiSettings,  FiUser } from 'react-icons/fi';
 import {  FaBookReader } from 'react-icons/fa';
 import {RiNotification3Line} from "react-icons/ri"
+import { useContext } from 'react';
+import { OrderContext } from './HomeStaff';
 const Nav = () => {
+   const {orders} = useContext(OrderContext)
+
+
   return (
     <nav className='flex items-center justify-around py-4 px-4 sticky bg-blue-400 shadow-inner'>
          <div className='Brand hidden sm:block'>
@@ -14,11 +19,13 @@ const Nav = () => {
           <NavLink to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full 
           text-slate-50 hover:text-slate-500'><FiUser style={{fontSize:20}}/></NavLink>
           <NavLink to="notification" className='flex gap-1 items-center hover:bg-slate-200 p-2
-           rounded-full text-slate-500 hover:text-slate-500 relative'>
+           rounded-full text-slate-50 hover:text-slate-500 relative'>
 
           <RiNotification3Line style={{fontSize:20}}/>
-            <small className='absolute top-0 -right-3 -z-1 bg-slate-700 p-[2px] px-1 text-xs 
-            rounded text-slate-50'>+3</small>
+           {
+            orders > 0 &&  <small className='absolute top-0 -right-3 -z-1 bg-slate-700 p-[2px] px-1 text-xs 
+            rounded text-slate-50'>+{orders}</small>
+           }
           </NavLink>
           
           <NavLink to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 

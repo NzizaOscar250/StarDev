@@ -1,94 +1,91 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 
 import MenuItem from './MenuItem'; // Import the MenuItem component
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import {  FiHelpCircle, FiHome, FiPhone, FiShoppingBag, FiUser } from 'react-icons/fi';
-import IMG1 from "../assets/product_22.jpeg"
-import IMG from "../assets/product_21.jpeg"
-import product1 from "../assets/product (1).jpg"
-import product2 from "../assets/product (2).jpg"
-import product3 from "../assets/product (3).jpg"
-import product4 from "../assets/product (4).jpg"
-import product5 from "../assets/product (5).jpg"
-import product6 from "../assets/product (6).jpg"
-import { MenuContext } from './Home';
+import {  FiHelpCircle, FiHome, FiPhone} from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import {io} from "socket.io-client"
 
-const items = [
-  {   id:1,
-      name: "Chief Classic Salad / Salade Du Chef Classique",
-      description: "Composition of Lettuce, onion, tomato, carrots, cucumber, Ham, croutons, avocado, egg, black olive, cheese, dressed with vinaigrette",
-      price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-      image: IMG
-  },
-  {
-    id:2,    
-      name: "Classic Ceasar Salad / Salade Cesar Classique",
-      description: "An eye appeal Crips bacon, croutons, Lettuce, tomato, onion, parmessa cheese, Egg, Green pepper, Dressed with thousand hills dressing",
-      price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-      image: IMG1
-  },
-  {   
-      id:3,
-      name: "Avocado Salad / Salade D’avocat",
-      description: "A large portion of fanned avocado, tomato, bedded on crispy lettuce and splashed with French dressing sauce",
-      price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-      image: product1
-  },
-  {
-      id:4,
-      name: "Californian Salad / Salade Californienne",
-      description: "Assorted timbale of fresh lettuce, carrots, onion, tomato avocado, egg, feta cheese, peanuts, tuna fish, dressed with Americano sauce",
-      price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-      image: product5
-  },
-  {
-    id:5,
-      name: "Nicoise Salad / Salade Nicoise",
-      description: "Nice for Rwandan potato, tomato, lettuce, egg, green beans, tuna fish, anchovy, mayonnaise",
-      price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-      image: product4
-  },
-  {
-    id:6,
-    name: "Nicoise Salad / Salade Nicoise",
-    description: "Nice for Rwandan potato, tomato, lettuce, egg, green beans, tuna fish, anchovy, mayonnaise",
-    price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-    image: product2
-},
-{
-  id:7,
-  name: "Nicoise Salad / Salade Nicoise",
-  description: "Nice for Rwandan potato, tomato, lettuce, egg, green beans, tuna fish, anchovy, mayonnaise",
-  price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-  image: product3
-},
-{
-  id:8,
-  name: "Nicoise Salad / Salade Nicoise",
-  description: "Nice for Rwandan potato, tomato, lettuce, egg, green beans, tuna fish, anchovy, mayonnaise",
-  price: Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000,
-  image: product6
-},
-  
-];
+const socket = io("http://localhost:7000")
 
 const Menu = () => {
-  // const [newItems,setNewItems,] = useState()
-  const  {selected,setSelected} = useContext(MenuContext)
+  const menu = useSelector((state)=>state.Menu)
+  const [items,setItems] = useState([])
+  const [order, setOrder] = useState({
+    items: []
+  });
+  const [amountpaid,setAmountPaid] = useState(0)
+  
+  const handleClick = (data) => {
+    const selected = {_id:data._id,name:data.name,price:data.price}
 
-  const handleClick = ()=>{
-    // console.log(total,isSelected)
-    // if(!isSelected){
-    //     setTotal((prev)=>prev + total)
-    // }
-    // else{
-    //   setTotal((prev)=>prev - total)
-    // }
-    console.log(selected)
+    // find selected item 
+    const index = order.items.findIndex(item => item._id === selected._id);
+    // If the item exists (index is not -1), remove it; otherwise, add it
+    if (index !== -1) {
+      const updatedItems = order.items.filter(item => item._id !== selected._id);
+      setOrder(prevOrder => ({
+        ...prevOrder,
+        items: updatedItems,
+        
+      }));
+    }
+    else{
+      setOrder(prevOrder => ({
+        ...prevOrder,
+        items: [...prevOrder.items, selected],
+        
+      }));
+    }
+   
+    
+  };
+
+
+  useEffect(()=>{
+    socket.on("chat message",(data)=>{
+      
+      alert(data)
+    })
+    
+  },[])
+
+  // const btnClick = ()=>{
+ 
+// }
+
+useEffect(()=>{
+  const newTotalAmount = order.items.reduce((total, item) => total + item.price, 0);
+  setAmountPaid(newTotalAmount )
+
+},[order])
+
+const handleOrder = (e)=>{
+  e.preventDefault()
+ 
+  const newOrder = {
+   items:[...order.items],
+   tableu: 10,
+   sit: 1,
+   time: new Date().getTime(),
+   amountpaid:amountpaid
   }
 
- 
+// Serialize the data to send over Socket.IO
+const serializedData = JSON.stringify(newOrder);
+console.log(serializedData)
+// Send the serialized data over Socket.IO
+socket.emit('order', serializedData);
+
+}
+
+
+ useEffect(()=>{
+  
+ setItems(menu)
+},[menu])
+
   return (
     <>
       <div  className="bg-white sm:w-1/2 container   mx-auto px-3 my-5 py-3 rounded max-h-[550px] 
@@ -108,8 +105,8 @@ const Menu = () => {
 
       <div>
       <ul role="list" className="">
-        {items.length && items.map(item => (
-          <React.Fragment key={item.id}>
+        {items.length == 0 ? <p className='flex items-center justify-center p-3 rounded mb-4 text-center bg-gray-500 w-28 mx-auto'><span className='text-gray-200 text-sm'> Processing....</span></p> : items.map(item => (
+          <React.Fragment key={item._id}>
             <MenuItem person={item} handleClick={handleClick}/> {/* Render MenuItem component */}
           </React.Fragment>
         ))}
@@ -123,7 +120,7 @@ const Menu = () => {
           
           
           <Link to="/" className='flex gap-1 items-center hover:bg-slate-200 p-2 rounded-full hover:text-slate-500'><FiPhone/></Link>
-      <Button name="" actions={handleClick} bgcolor="
+      <Button name="" actions={handleOrder} bgcolor="
        outline outline-2 outline-offset-0 flex items-center gap-2 rounded-full bg-indigo-900 text-white"/>
       </footer>
       <p className='text-center text-sm text-slate-500'>Powered By StarDev Tech &copy;{new Date().getFullYear()}</p>

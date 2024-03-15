@@ -1,15 +1,37 @@
-import {useEffect} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import { FiClipboard, FiMessageSquare, FiUsers } from 'react-icons/fi'
 
 import { Tooltip,Select, initTE } from "tw-elements";
 import DailyOrders from '../charts/DailyOrders';
 
+import Socket from '../../sockets';
+import { OrderContext } from './HomeStaff';
 
 const Statistics = () => {
 
+  const [notification,setNotification] = useState(0)
+  const {orders,setOrders} = useContext(OrderContext)
   useEffect(() => {
     initTE({ Tooltip,Select });
   }, []);
+
+
+  
+  useEffect(()=>{
+    Socket.on("new_order",(data)=>{
+      
+      // alert(data)
+     
+      setNotification((prev)=>prev + 1)
+      setOrders((prev)=>prev + 1)
+    })
+    
+  },[])
+
+  useEffect(()=>{
+
+  },[notification])
+
 
 
   return (
@@ -69,7 +91,7 @@ const Statistics = () => {
             <div className=' border-l-4 rounded border-purple-400 bg-white p-4 flex items-center gap-2 justify-between shadow'>
                   <div>
                       <h2 className='text-purple-400 text-md uppercase'>Pending Orders</h2>
-                      <p className='text-slate-500 font-bold text-xl'>2</p>
+                      <p className='text-slate-500 font-bold text-xl'>{notification}</p>
                   </div>
             
                   <div className='text-slate-300'>
