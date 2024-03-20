@@ -1,5 +1,5 @@
 {
-  "name": "project_management_system",
+  "name": "StarDev Techology",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,22 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@yudiel/react-qr-scanner": "^1.2.10",
     "axios": "^1.6.7",
+    "flowbite": "^2.3.0",
+    "flowbite-react": "^0.7.3",
     "jwt-decode": "^4.0.0",
-    "primereact": "^10.5.1",
-    "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "react-qr-scanner": "^1.0.0-alpha.11",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.0",
-    "react-to-pdf": "^1.0.1",
     "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0",
-    "socket.io-client": "^4.7.4",
-    "tw-elements": "^1.1.0"
+    "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

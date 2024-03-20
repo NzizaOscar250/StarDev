@@ -1,24 +1,18 @@
-
+import React from 'react'
 import { Outlet } from 'react-router-dom'
+import Navigation from '../pages/Navigation'
+import Footers from '../pages/Footers'
 
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 const RootLayout = () => {
-const dispatch = useDispatch();
-
-  useEffect(()=>{
-      
-      
-  },[dispatch])
-
   return (
-    <>
+     <div className="">
+        <Navigation/>
 
-        
-        <div className="">
-          <Outlet/>
-        </div>
-    </>
+           <div className="">
+           <Outlet/>
+           </div>
+        <Footers/>
+     </div>
   )
 }
 

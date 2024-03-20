@@ -2,11 +2,12 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/tw-elements/dist/js/**/*.js",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js'
+  
     
   ],
-  plugins: [require("tw-elements/dist/plugin.cjs")],
+  plugins: [require('flowbite/plugin')],
   theme: {
     fontFamily:{
       display:['Open Sans','sans-serif'],
@@ -49,6 +50,6 @@ export default {
       center: true,
     },
   },
-  plugins: [],
+ 
 }
 
