@@ -11,7 +11,8 @@ const Home = () => {
                   <img src={hero} alt='star dev' className='drop-shadow'/>
               </div>
               <div className='col-span-3 px-2'>
-                 <h1 className='text-gray-100 uppercase font-semibold text-4xl leading-snug'>Better solutions for your business</h1>
+                 <h1 className='text-gray-100 uppercase font-semibold text-4xl leading-snug'>We make it happen</h1>
+                 <h2 className="text-gray-100 uppercase font-semibold text-3xl">Make Your Business BOLD</h2>
                  <p className='text-gray-50  py-3 leading-6 font-light'>We are a team of dedicated passionate talented software developers and engineers . making software development ease</p>
                 <Button>Get started</Button>
               </div>
