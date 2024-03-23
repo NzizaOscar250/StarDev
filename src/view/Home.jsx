@@ -7,9 +7,9 @@ const Home = () => {
     <div className='bg-violet-600 min-h-[50vh]'>
          <div className='container py-5'>
              <div className='grid grid-rows-2 sm:grid-cols-6 gap-3 justify-items-center items-center  '>
-             <div className='col-span-3 lg:hidden'>
-               <h1 className='text-gray-100 uppercase font-semibold text-4xl leading-snug py-2'>We make it happen</h1>
-                  <img src={hero} alt='star dev' className='drop-shadow'/>
+             <div className='col-span-3 lg:hidden flex flex-col justify-center items-center'>
+               <h1 className='text-gray-100 uppercase font-semibold text-3xl leading-snug py-2 text-center'>We make it happen</h1>
+                  <img src={hero} alt='star dev' className='drop-shadow' className="h-[140px]"/>
               </div>
               <div className='col-span-3 px-2'>
                  <h1 className='text-gray-100 uppercase font-semibold text-4xl leading-snug hidden lg:block'>We make it happen</h1>
