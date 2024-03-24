@@ -4,9 +4,12 @@ import { Button , Card} from 'flowbite-react'
 import abt from "../assets/abt.jpg"
 import code from "../assets/code.jpg"
 import { Link } from 'react-router-dom'
+import Pricing from '../pages/Pricing'
+import Whatsapp from '../pages/Whatsapp'
 const Home = () => {
   return (
     <div>
+    <Whatsapp/>
       <div className="bg-violet-600 min-h-[10vh]">
          <div className='container py-5'>
              <div className='grid grid-cols-3 sm:grid-cols-6 gap-3 justify-items-center items-center  '>
@@ -33,16 +36,13 @@ const Home = () => {
          </div>
     </div>
 
-
-
-       
     <div className='container my-3  py-3 px-2 md:px-0'>
 
       <div>
          <h2 className='text-slate-500 uppercase font-semibold text-2xl'>Our Services  </h2>
           <p className='font-light  text-sm my-2'>At StarDev Technology, we specialize in providing comprehensive web application software solutions tailored to meet the unique needs and goals of our clients. Our services include:</p>
         
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 cards py-3   mb-2'>
+          <div className='grid grid-cols-1 sm:grid-cols-3 gap-1  cards py-3   mb-2'>
 
           
            <Card href="#" className=" p-0" theme={{root:{children:'flex h-full flex-col justify-center gap-4 p-4',href:''},
@@ -136,6 +136,20 @@ const Home = () => {
 
           </div>
       
+      </div>
+
+
+      <div className='pricing pb-[3rem] bg-gradient-to-tr from-purple-500 to-purple-600 p-4 rounded relative'>
+        <div style={{clipPath:' polygon(50% 0%, 19% 26%, 78% 26%)'}} 
+        className='bg-purple-600 left-1/2 p-4 w-10 absolute -top-1'></div>
+        <h2 className='text-slate-50 uppercase font-semibold text-2xl pt-3 '>Pricing  </h2>
+         <p className='font-light text-sm py-3 text-slate-50'>
+          
+            At StarDev Technology, we understand that every project is unique, and pricing can vary depending on factors such as project complexity, scope, and specific client requirements. 
+            We offer transparent and competitive pricing tailored to meet the needs and budgets of our clients
+          </p>
+          
+          <Pricing/>
       </div>
     <div id='about'>
         <h2 className=''>ABOUT US</h2>
