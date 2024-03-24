@@ -1,6 +1,6 @@
 
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
-
+import profile from "../assets/stardev.png"
 export default function Whatsapp() {
 
   const handleSubmit = (e)=>{
@@ -8,6 +8,6 @@ export default function Whatsapp() {
     console.log(e)
   }
   return (
-      <FloatingWhatsApp phoneNumber='0785140170'  onSubmit={handleSubmit}/>
+      <FloatingWhatsApp statusMessage="Innovate. Illuminate. Elevate." phoneNumber='+25 0785140170' accountName='StarDev Technology' avatar={profile}  onSubmit={handleSubmit} />
   )
 }
