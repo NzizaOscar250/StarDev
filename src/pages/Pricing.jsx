@@ -19,7 +19,8 @@ export default function Pricing() {
               Hourly Rates
               </h5>
               <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
-              For projects where the scope is not fully defined or requires ongoing development and support, we offer hourly rates.
+              For projects where the scope is not fully defined or requires ongoing development and support, 
+              we offer hourly rates.
         
               </p>
               
@@ -33,7 +34,8 @@ export default function Pricing() {
               Fixed-Price Projects
               </h5>
               <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
-              For well-defined projects with clear requirements, we provide fixed-price quotes to ensure transparency and budget predictability.
+              For well-defined projects with clear requirements,
+              we provide fixed-price quotes to ensure transparency and budget predictability.
          
               </p>
               
@@ -57,13 +59,13 @@ export default function Pricing() {
            </Card>
            
     </div>
-    <Blockquote className="my-4 border-l-4 border-gray-300 bg-purple-300 p-4 dark:border-gray-500
+    {/* <Blockquote className="my-4 border-l-4 border-gray-300 bg-purple-300 p-4 dark:border-gray-500
      dark:bg-gray-800 font-semibold  text-sm text-slate-500">
     To receive a personalized quote for your project or to learn more about our pricing options, 
     please contact us. Our team will be happy to discuss your project requirements, provide an estimate, and answer any questions you may have.
 
 
-      </Blockquote>
+      </Blockquote> */}
     </div>
    
   );

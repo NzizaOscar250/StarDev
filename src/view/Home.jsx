@@ -14,11 +14,11 @@ const Home = () => {
          <div className='container py-5'>
              <div className='grid grid-cols-3 sm:grid-cols-6 gap-3 justify-items-center items-center  '>
              <div className='col-span-3 lg:hidden flex flex-col justify-center items-center'>
-               <h1 className='text-gray-100 uppercase font-semibold text-3xl leading-snug py-2 text-center'>We make it happen</h1>
-                  <img src={hero} alt='star dev' className="drop-shadow h-[140px]"/>
+               {/* <h1 className='text-gray-100 uppercase font-semibold text-3xl leading-snug py-2 text-center'>We make it happen</h1> */}
+                  <img src={hero} alt='star dev' className="drop-shadow p-2 w-10/12 "/>
               </div>
               <div className='col-span-3 px-2'>
-                 <h1 className='text-gray-100 uppercase font-semibold text-4xl leading-snug hidden lg:block'>We'll make it happen</h1>
+                 <h1 className='text-gray-100 uppercase font-semibold text-4xl leading-snug '>We'll make it happen</h1>
                  <h2 className="text-gray-100 uppercase font-semibold text-xl">Make Your Business BOLD</h2>
                  <p className='text-gray-50  py-3 leading-6 font-light'>Welcome to StarDev Technology – where innovation meets excellence, and success knows no bounds.
                   <br/><br/>
@@ -38,15 +38,15 @@ const Home = () => {
 
     <div className='container my-3  py-3 px-2 md:px-0'>
 
-      <div>
+      <div className='my-[3rem] '>
          <h2 className='text-slate-500 uppercase font-semibold text-2xl'>Our Services  </h2>
           <p className='font-light  text-sm my-2'>At StarDev Technology, we specialize in providing comprehensive web application software solutions tailored to meet the unique needs and goals of our clients. Our services include:</p>
         
-          <div className='grid grid-cols-1 sm:grid-cols-3 gap-1  cards py-3   mb-2'>
+          <div className='grid grid-cols-1 sm:grid-cols-4 gap-2  cards py-3   mb-2'>
 
           
-           <Card href="#" className=" p-0" theme={{root:{children:'flex h-full flex-col justify-center gap-4 p-4',href:''},
-           img:{base:'hidden lg:block'}}} imgSrc={abt} horizontal>
+           <Card href="#" className=" p-0" theme={{root:{children:'flex h-full flex-col justify-between gap-4 p-4',href:''},
+           img:{base:'hidden lg:block'}}} >
               <h5 className="text-md  tracking-tight uppercase text-slate-500 font-semibold dark:text-white">
                 E-Commerce Solutions
               </h5>
@@ -66,8 +66,8 @@ const Home = () => {
              </Button>
            </Card>
 
-           <Card href="#" className=" p-0"  theme={{root:{children:'flex h-full flex-col justify-center gap-4 p-4',href:''},
-           img:{base:'hidden lg:block'}}}  imgSrc={abt} horizontal >
+           <Card href="#" className=" p-0"  theme={{root:{children:'flex h-full flex-col  justify-between  gap-4 p-4',href:''},
+           img:{base:'hidden lg:block'}}}   >
               <h5 className="text-md  tracking-tight uppercase text-slate-500 font-semibold dark:text-white">
                 Enterprise Resource Planning (ERP) Systems
               </h5>
@@ -87,8 +87,7 @@ const Home = () => {
              </Button>
            </Card>
 
-          <Card href="#" className=" p-0"  theme={{root:{children:'flex h-full flex-col justify-center gap-4 p-4',href:''},
-           img:{base:'hidden lg:block'}}}  imgSrc={abt} horizontal>
+          <Card href="#" className=" p-0"  theme={{root:{children:'flex h-full flex-col  justify-between  gap-4 p-4',href:''}}}  >
               <h5 className="text-md  tracking-tight uppercase text-slate-500 font-semibold dark:text-white">
                 Web Application Development
               </h5>
@@ -107,8 +106,8 @@ const Home = () => {
             </svg>
              </Button>
            </Card>
-           <Card href="#" className=" p-0"  theme={{root:{children:'flex h-full flex-col justify-center gap-4 p-4',href:''},
-           img:{base:'hidden lg:block'}}}  imgSrc={code}  horizontal >
+           <Card href="#" className=" p-0"  theme={{root:{children:'flex h-full flex-col justify-between gap-4 p-4',href:''},
+           img:{base:'hidden lg:block'}}}   >
               <h5 className="text-md  tracking-tight uppercase text-slate-500 font-semibold dark:text-white">
                 API Integration
               </h5>
@@ -128,8 +127,7 @@ const Home = () => {
              </Button>
            </Card>
 
-         
-
+      
 
 
            
